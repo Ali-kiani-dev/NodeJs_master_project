@@ -18,15 +18,16 @@ const Episode = mongoose.Schema({
 })
 
 Episode.plugin(mongoosePagination);
-Episode.methods.download = function(req){
+
+Episode.methods.download = function(check, user){
     let access = false;
-    if(! req.isAuthenticated()) return '#';
+    if(! check) return '#';
     if(this.type == 'free')
         access = true;
     else if(this.type == 'vip')
-        access = req.user.isVip();
+        access = user.isVip();
     else if(this.type == 'cash')
-        access = req.user.checkpayCash(this.course)
+        access = user.checkpayCash(this.course)
 
     const time = new Date().getTime() + 1000 * 3600 * 24
     const secert = `asdqwoidjopedm!@sdfwe#asd%${this.id}${time}`;

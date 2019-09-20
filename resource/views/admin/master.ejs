@@ -76,6 +76,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="/admin/profile">ویرایش اطلاعات</a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/admin/chat-room">ارتباط آنلاین</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>
@@ -113,7 +116,7 @@
                                 </div>
                             </li>
                             <% } %>
-                            <% if(userCan('artile') && req.user.admin) { %>
+                            <% if(userCan('article') && req.user.admin) { %>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                                     data-target="#submenu-4" aria-controls="submenu-4"><i
@@ -162,7 +165,7 @@
                             <li class="nav-item ">
                                 <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
                                     data-target="#submenu-10" aria-controls="submenu-10"><i
-                                        class="fab fa-fw fa-wpforms"></i>کاربران</a>
+                                        class="fa fa-fw fa-user-plus"></i>کاربران</a>
                                 <div id="submenu-10" class="collapse submenu">
                                     <ul class="nav flex-column" style="padding-right: 20px">
                                         <li class="nav-item">
@@ -176,6 +179,24 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/admin/user">مدیریت کاربران سایت</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <% } %>
+
+                            <% if(userCan('froums') && req.user.admin) { %>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                                    data-target="#submenu-15" aria-controls="submenu-15"><i
+                                        class="fab fa-fw fa-forumbee"></i>انجمن ها</a>
+                                <div id="submenu-15" class="collapse submenu">
+                                    <ul class="nav flex-column" style="padding-right: 20px">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/admin/froum/create">افزودن انجمن جدید</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/admin/froum">مدیریت انجمن های سایت</a>
                                         </li>
                                     </ul>
                                 </div>

@@ -35,5 +35,12 @@ router.post('/comment', commentController.comment);
 router.post('/course/payment', courseController.payment);
 router.get('/course/payment/callbackurl', courseController.callbackurl);
 
+// froum
+router.get('/froum', homeController.froum);
+router.get('/froumQue/:id', homeController.froumQue);
+router.get('/froumAns/:id', homeController.froumAns);
+router.post('/froumQue', homeController.createfroumQue);
+router.post('/froumAns', homeController.createfroumAns);
+
 
 module.exports = router;

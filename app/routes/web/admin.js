@@ -19,9 +19,7 @@ const permissionController = require('app/http/controllers/permission/permission
 const roleController = require('app/http/controllers/role/roleController');
 const userController = require('app/http/controllers/user/userController');
 const chatController = require('app/http/controllers/chat/chatController');
-
-
-
+const froumController = require('app/http/controllers/froum/froumController');
 
 
 // validator
@@ -32,6 +30,8 @@ const categoryValidator = require('app/http/validators/categoryValidator');
 const permissionValidator = require('app/http/validators/permissionValidator');
 const roleValidator = require('app/http/validators/roleValidator');
 const registerValidator = require('app/http/validators/registerValidator');
+const froumValidator = require('app/http/validators/froumValidator');
+
 
 const access = require('app/accessUser');
 
@@ -130,6 +130,18 @@ router.get('/user/:id/adminAccess', userController.adminAccess);
 router.get('/chat', chatController.chatForm);
 router.get('/chat-room', chatController.chatRoom);
 
+//Froum
 
+router.get('/froum', froumController.index);
+router.get('/froum/create', froumController.create);
+router.post('/froum/create', froumValidator.handle(), froumController.store);
+// delete froum
+router.delete('/froum/:id', froumController.destroy);
+//edit froum
+router.get('/froum/:id/edit', froumController.edit);
+router.put('/froum/:id', froumValidator.handle(), froumController.update);
+
+// ckeditor upload image
+router.post('/upload-image', upload.single('upload'), adminController.uploadImage)
 
 module.exports = router;

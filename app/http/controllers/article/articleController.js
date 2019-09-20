@@ -42,7 +42,6 @@ class articleController extends controller {
             return res.json('not Access');
         }
         res.render('admin/article/index', { articles })
-
     }
 
     async create(req, res, next) {

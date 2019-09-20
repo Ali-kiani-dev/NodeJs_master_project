@@ -9,5 +9,8 @@ module.exports = {
     session,
     layout,
     database,
-    debug : false
+    debug : true,
+    jwt : {
+        secretkey : 'asd#SDAS%ASDA!asA'
+    }
 }

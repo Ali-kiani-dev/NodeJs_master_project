@@ -5,7 +5,7 @@
 
             <%- include('./../../layouts/error-messages' , { errors }) %>
 
-            <form id="validationform" method="POST" action="/admin/article/store" enctype="multipart/form-data"
+            <form id="validationform" method="POST" action="/admin/article/create" enctype="multipart/form-data"
                 novalidate>
                 <div class="form-group row">
                     <div class="col">
@@ -57,6 +57,7 @@
     </div>
 </div>
 
+<script src="//cdn.ckeditor.com/4.12.1/full/ckeditor.js"></script>
 <link href="/css/component-chosen.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.6/chosen.jquery.min.js"></script>
 
@@ -64,4 +65,9 @@
     $('.form-control-chosen').chosen({
 
     })
+
+    CKEDITOR.replace('body', {
+        filebrowserUploadUrl : '/admin/upload-image'
+    })
+
 </script>

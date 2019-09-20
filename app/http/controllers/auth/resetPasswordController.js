@@ -33,7 +33,7 @@ class resetPasswordController extends controller {
             return this.back(req, res);
         }
 
-        await passwordreset.update({use : true} , err => {console.log(err) })
+        await passwordReset.update({use : true} , err => {console.log(err) })
         res.redirect('/auth/login');
     }
 }

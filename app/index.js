@@ -12,6 +12,9 @@ const rememberLogin =  require('app/http/middleware/rememberLogin');
 const chatController = require('app/http/controllers/chat/chatController');
 const access = require('app/accessUser');
 const socketIo = require('socket.io');
+// const HttpGraphQl = require('express-graphql');
+// const schemaGQ = require('app/graphql/schema');
+// const resolverGQ = require('app/graphql/resolver');
 
 
 const app = express();
@@ -34,12 +37,13 @@ module.exports = class Application {
 
     setMongoConnection() {
         mongoose.Promise = global.Promise;
-        mongoose.connect(config.database.url , { useFindAndModify : false });
+        mongoose.connect(config.database.url , { useFindAndModify : false, useNewUrlParser: true });
     }
 
     setConfig() {
         require('app/passport/passport-local');
         require('app/passport/passport-google');
+        require('app/passport/passport-jwt');
         app.use(express.static(config.layout.PUBLIC_DIR));
         app.set('view engine' , config.layout.VIEW_ENGINE);
         app.set('views' , config.layout.VIEW_DIR); 
@@ -65,7 +69,13 @@ module.exports = class Application {
     }
 
     setRouters(){
-        app.use(require('app/routes/web'));
+        // app.use('/graphql', HttpGraphQl({
+        //     schema : schemaGQ,
+        //     rootValue : resolverGQ,
+        //     graphiql : true
+        // }))
         app.use(require('app/routes/api'));
+        app.use(require('app/routes/web'));
+
     }
 }
