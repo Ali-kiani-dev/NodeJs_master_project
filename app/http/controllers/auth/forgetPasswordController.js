@@ -4,6 +4,7 @@ const passwordReset = require('app/models/password-reset');
 const uniqueString = require('unique-string')
 const nodemailer = require('nodemailer');
 class forgetpasswordController extends controller {
+
     showForm(req, res, next) {
         res.render('home/auth/password/reset', { messages: req.flash('errors'), success: req.flash('success'), recaptcha: this.recaptcha.render() })
     }
@@ -55,15 +56,15 @@ class forgetpasswordController extends controller {
         });
 
         transporter.sendMail(info, (err, data) => {
-            if(err) console.log(err.message);
+            if(err) console.log(err.message); 
 
             this.alert(req, {
                 type : 'success',
-                title : 'تغییر رمز عبور',
+                title : 'تغییر رمز عبور', 
                 text : 'لیمک تغییر رمز عبور به ایملیتان ارسال شد'
             })
 
-            res.redirect('/auth/password/reset');
+            res.redirect('/auth/password/reset'); 
 
         })
     }
