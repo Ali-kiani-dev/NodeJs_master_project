@@ -55,18 +55,18 @@ class forgetpasswordController extends controller {
             ` // html body
         });
 
-        transporter.sendMail(info, (err, data) => {
+        transporter.sendMail(info, (err, data) => { 
             if(err) console.log(err.message); 
 
-            this.alert(req, {
+            this.alert(req, { 
                 type : 'success',
                 title : 'تغییر رمز عبور', 
-                text : 'لیمک تغییر رمز عبور به ایملیتان ارسال شد'
+                text : 'لیمک تغییر رمز عبور به ایملیتان ارسال شد' 
             })
 
-            res.redirect('/auth/password/reset'); 
+            res.redirect('/auth/password/reset');  
 
-        })
+        }) 
     }
 }
 
