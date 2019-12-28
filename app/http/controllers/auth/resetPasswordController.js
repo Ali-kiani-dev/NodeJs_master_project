@@ -4,7 +4,7 @@ const passwordReset = require('app/models/password-reset');
 const uniqueString = require('unique-string');
 class resetPasswordController extends controller {
     showForm(req, res, next){
-        res.render('home/auth/password/email' , {messages : req.flash('errors') , success : req.flash('success'),  recaptcha : this.recaptcha.render() })
+        res.render('home/auth/password/email' , {messages : req.flash('errors') , success : req.flash('success'),  recaptcha : this.recaptcha.render(), token : req.params.token })
     }
 
     async resetPasswordProcess(req, res, next){
