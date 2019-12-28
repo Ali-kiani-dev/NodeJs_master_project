@@ -7,7 +7,7 @@ const Froum = require('app/models/froum');
 const FroumQue = require('app/models/froumQue');
 const FroumAns = require('app/models/froumAns');
 const path = require('path');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 
 const moment = require('moment-jalaali');
 moment.loadPersian({usePersianDigits : true , dialect : 'persian-modern'});

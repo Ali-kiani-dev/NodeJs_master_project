@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const mongoosePagination = require('mongoose-paginate');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const Episode = mongoose.Schema({
     course : { type : Schema.Types.ObjectId , ref : 'Course'},
     number : { type : String , required : true },
