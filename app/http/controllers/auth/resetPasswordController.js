@@ -16,7 +16,7 @@ class resetPasswordController extends controller {
     }
 
     async resetPassword(req, res, next){
-        let passwordreset = passwordReset.findOne({ $and : [{email : req.body.email} , { token : req.body.token}]});
+        let passwordreset = await passwordReset.findOne({ $and : [{email : req.body.email} , { token : req.body.token}]});
         if(! passwordreset ){
             req.flash('errors' , 'اطلاعات وارد شده صحیح نمی باشد');
             return this.back(req, res);

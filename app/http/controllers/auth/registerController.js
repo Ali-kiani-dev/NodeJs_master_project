@@ -6,9 +6,9 @@ class registerController extends controller {
         res.render('home/auth/register' , {messages : req.flash('errors'), recaptcha : this.recaptcha.render()})
     }
 
-    registerProccess(req,res,next){
-        this.RecaptchaVaildation(req, res)
-            .then(result => this.validationData(req))
+    async registerProccess(req,res,next){
+        await this.RecaptchaVaildation(req, res)
+            .then(result => await this.validationData(req))
             .then(result => {
                 if(result) this.register(req,res,next);
                 else

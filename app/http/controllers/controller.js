@@ -13,7 +13,7 @@ module.exports = class controller {
         this.recaptcha = new Recaptcha(config.service.RECAPTCHA.SITE_KEY, config.service.RECAPTCHA.SECRET_KEY, { ...config.service.RECAPTCHA.options });
     }
 
-    RecaptchaVaildation(req, res) {
+    async RecaptchaVaildation(req, res) {
         return new Promise((resolve, reject) => {
             this.recaptcha.verify(req, (err, data) => {
                 if (err) {
