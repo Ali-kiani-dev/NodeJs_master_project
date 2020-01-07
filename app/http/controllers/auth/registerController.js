@@ -8,7 +8,7 @@ class registerController extends controller {
 
     async registerProccess(req,res,next){
         await this.RecaptchaVaildation(req, res)
-            .then(result => await this.validationData(req))
+            .then(result => this.validationData(req))
             .then(result => {
                 if(result) this.register(req,res,next);
                 else
