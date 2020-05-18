@@ -11,8 +11,10 @@ class registerController extends controller {
             .then(result => this.validationData(req))
             .then(result => {
                 if(result) this.register(req,res,next);
-                else
+                else {
+                    req.flash('formData', req.body);
                     res.redirect('/auth/register')
+                }
             })
     }
 
@@ -20,8 +22,8 @@ class registerController extends controller {
         passport.authenticate('local.register' , {
             successRedirect : '/',
             failureRedirect : '/auth/register',
-            failureMessage : true
-        })(req,res,next)
+            failureMessage: true
+        })(req, res, next)
     }
 }
 

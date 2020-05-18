@@ -24,12 +24,9 @@ class forgetpasswordController extends controller {
             return this.back(req, res);
         }
 
-        const setpassowrd = new passwordReset({
+        const setpassowrd = await passwordReset.create({
             email: req.body.email,
             token: uniqueString()
-        })
-        await setpassowrd.save(err => {
-            console.log(err)
         })
 
         // create reusable transporter object using the default SMTP transport
@@ -38,8 +35,8 @@ class forgetpasswordController extends controller {
             port: 587,
             secure: false, // true for 465, false for other ports
             auth: {
-                user: 'a46713b1e8d7d0', // generated ethereal user
-                pass: '2a53a9682fed74' // generated ethereal password
+                user: '07b731ed3a1449', // generated ethereal user
+                pass: 'f86bd85e55553e' // generated ethereal password
             }
         });
 
@@ -64,7 +61,7 @@ class forgetpasswordController extends controller {
                 text : 'لیمک تغییر رمز عبور به ایملیتان ارسال شد' 
             })
 
-            res.redirect('/auth/password/reset');  
+            return res.redirect('/auth/password/reset');  
 
         }) 
     }

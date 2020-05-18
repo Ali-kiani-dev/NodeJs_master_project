@@ -37,7 +37,7 @@ module.exports = class Application {
 
     setMongoConnection() {
         mongoose.Promise = global.Promise;
-        mongoose.connect(config.database.url , { useFindAndModify : false, useNewUrlParser: true });
+        mongoose.connect(config.database.url , { useFindAndModify : false, useNewUrlParser: true, useUnifiedTopology: true });
     }
 
     setConfig() {

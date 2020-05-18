@@ -17,20 +17,19 @@ passport.use('local.register' , new localStrategy({
     usernameField : 'email',
     passwordField : 'password',
     passReqToCallback : true
-} , (req, email, password, done)=>{
-    User.findOne({'email' : email} , (err , user)=>{
+} , async (req, email, password, done)=>{
+    await User.findOne({'email' : email} , async (err , user)=>{
         if(err) return done(err)
-        if(user) return done(null , false , req.flash('errors' , 'قبلا کاربری با این مشخضات در سیستم ثبت نام کرده است'));
+        if(user) return done(null , false , { message : 'aaaa'});
         const adduser = new User({
             name : req.body.name,
             email,
             password
         })
 
-        console.log(adduser);
-        adduser.save(err => {
+        await adduser.save(err => {
             if(err) return done(err , false , req.flash('errors' , 'امکان ثبت نام در حال حاضر وجود ندارد مجددا تلاش نمایید!'));
-            done(null , user);
+            done(null , adduser);
         })
     })
 }))

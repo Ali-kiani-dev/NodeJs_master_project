@@ -70,6 +70,7 @@ class courseController extends controller {
         if (result) {
             this.storeProcess(req, res, next);
         } else {
+            console.log(req.file)
             if (req.file) {
                 fs.unlinkSync(req.file.path)
             }
@@ -78,6 +79,7 @@ class courseController extends controller {
     }
 
     storeProcess(req, res, next) {
+
         let images = this.resizeImage(req.file)
         let { title, body, type, price, tags } = req.body;
         const addcourse = new Course({

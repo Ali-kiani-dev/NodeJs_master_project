@@ -31,9 +31,9 @@ User.methods.hasRoles = function(roles){
 }
 
 
-User.pre('save' , function(next){
-    let salt = bcrypt.genSaltSync(15);
-    let hash = bcrypt.hash(this.password , salt , (err) => {
+User.pre('save' , async function(next){
+    let salt = await bcrypt.genSaltSync(15);
+    let hash = await bcrypt.hashSync(this.password , salt , (err) => {
         console.log(err)
     });
     this.password = hash;

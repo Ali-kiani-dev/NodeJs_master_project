@@ -8,6 +8,7 @@ module.exports = class Helper {
         autoBind(this);
         this.req = req;
         this.res = res;
+        this.formData = req.flash('formData')[0];
     }
 
     object(){
@@ -17,7 +18,8 @@ module.exports = class Helper {
             viewPath : this.viewPath,
             req : this.req,
             errors : this.req.flash('errors'),
-            permission : this.checkUserAccess
+            permission : this.checkUserAccess,
+            old : this.old
         }
     }
 
@@ -34,5 +36,10 @@ module.exports = class Helper {
 
     viewPath(dir){
         return path.resolve(config.layout.VIEW_DIR + '/' + dir)
+    }
+
+    
+    old(field , defaultValue = ''){
+        return this.formData && this.formData.hasOwnProperty(field) ? this.formData[field] : defaultValue;
     }
 }
